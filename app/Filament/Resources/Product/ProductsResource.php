@@ -6,13 +6,16 @@ use App\Filament\Resources\Product\ProductsResource\Pages;
 // use App\Filament\Resources\Product\ProductsResource\RelationManagers;
 use App\Filament\Resources\Product\CategoryResource\RelationManagers;
 use App\Models\Product\Category;
+use App\Models\Product\Brand;
 use App\Models\Product\Products;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -60,6 +63,23 @@ class ProductsResource extends Resource
               ])
               ->columns(2),
 
+            Forms\Components\Section::make('Associations')
+              ->schema([
+                Forms\Components\Select::make('product_brand_id')
+                  ->label('Select Brand')
+                  ->options(Brand::all()->pluck('name', 'id')),
+
+                Forms\Components\Select::make('product_category_id')
+                  ->label('Select Category')
+                  ->options(Category::all()->pluck('name', 'id'))
+                  ->required(),
+              ]),
+
+          ])
+          ->columnSpan(['lg' => 1]),
+
+        Forms\Components\Group::make()
+          ->schema([
             Forms\Components\Section::make('Pricing')
               ->schema([
                 Forms\Components\TextInput::make('price')
@@ -88,26 +108,20 @@ class ProductsResource extends Resource
                   ->required(),
               ])
               ->columns(2),
-          ])
-          ->columnSpan(['lg' => 2]),
 
-        Forms\Components\Group::make()
-          ->schema([
-            Forms\Components\Section::make('Associations')
-              ->schema([
-                // Forms\Components\Select::make('shop_brand_id')
-                //   ->relationship('brand', 'name')
-                //   ->searchable(),
-
-                Forms\Components\Select::make('product_category_id')
-                  ->label('Select Category')
-                  ->options(Category::all()->pluck('name', 'id'))
-                  ->required(),
-              ]),
+            Forms\Components\FileUpload::make('image')
+              ->label('Product Image')
+              ->image()
+              ->maxSize(2048)
+              ->directory('product')
+              ->getUploadedFileNameForStorageUsing(
+                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                  ->prepend('product-'),
+              ),
           ])
           ->columnSpan(['lg' => 1]),
       ])
-      ->columns(3);
+      ->columns(2);
   }
 
   public static function table(Table $table): Table
@@ -115,20 +129,33 @@ class ProductsResource extends Resource
     return $table
       ->recordTitleAttribute('name')
       ->columns([
+        ImageColumn::make('image')
+          ->label('Image')
+          ->square()
+          ->toggleable(),
+
         Tables\Columns\TextColumn::make('name')
           ->label('Name')
           ->searchable()
           ->sortable(),
 
+        Tables\Columns\TextColumn::make('brands.name')
+          ->label('Brand')
+          ->searchable()
+          ->sortable()
+          ->toggleable(),
+
         Tables\Columns\TextColumn::make('category.name')
           ->label('Category')
           ->searchable()
-          ->sortable(),
+          ->sortable()
+          ->toggleable(),
 
         Tables\Columns\TextColumn::make('price')
           ->label('Price')
           ->searchable()
-          ->sortable(),
+          ->sortable()
+          ->toggleable(),
 
         Tables\Columns\TextColumn::make('qty')
           ->label('Quantity')

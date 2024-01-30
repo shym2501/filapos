@@ -11,6 +11,14 @@ use App\Models\Product\Products;
 class Brand extends Model
 {
     use HasFactory;
+    protected $table = 'product_brands';
+    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'logo',
+        'website'
+    ];
 
     public function Product(): HasOne
     {

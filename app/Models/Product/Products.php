@@ -15,15 +15,18 @@ class Products extends Model
     protected $guarded = [];
     protected $fillable = [
         'product_category_id',
+        'product_brand_id',
+        'product_unit_id',
         'name',
         'slug',
+        'image',
         'price',
         'qty'
     ];
     public function category() : BelongsTo {
         return $this->belongsTo(Category::class, 'product_category_id', 'id');
     }
-    public function brand() : BelongsTo {
+    public function brands() : BelongsTo {
         return $this->belongsTo(Brand::class, 'product_brand_id', 'id');
     }
 
