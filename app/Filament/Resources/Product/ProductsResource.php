@@ -16,6 +16,9 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\Imports\ImportColumn;
+use Filament\Resources\Forms\Components\Text;
 
 
 class ProductsResource extends Resource
@@ -26,7 +29,7 @@ class ProductsResource extends Resource
   protected static ?string $recordTitleAttribute = 'name';
   protected static ?string $navigationGroup = 'Product Management';
   protected static ?string $navigationLabel = 'Products';
-  protected static ?int $navigationSort = 2;
+  protected static ?int $navigationSort = 4;
 
   public static function form(Form $form): Form
   {
@@ -110,9 +113,15 @@ class ProductsResource extends Resource
   public static function table(Table $table): Table
   {
     return $table
+      ->recordTitleAttribute('name')
       ->columns([
         Tables\Columns\TextColumn::make('name')
           ->label('Name')
+          ->searchable()
+          ->sortable(),
+
+        Tables\Columns\TextColumn::make('category.name')
+          ->label('Category')
           ->searchable()
           ->sortable(),
 

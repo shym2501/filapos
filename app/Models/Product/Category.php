@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\Product\Product;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Product\Products;
 
 class Category extends Model
 {
     use HasFactory;
     protected $table = 'product_category';
+    protected $guarded = [];
     protected $fillable = [
         'name',
         'slug'
@@ -27,8 +29,9 @@ class Category extends Model
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
-    // public function products(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Products::class, 'product_category_products', 'product_category_id', 'product_product_id');
-    // }
+
+    public function Product(): HasOne
+    {
+        return $this->hasOne(Products::class, 'product_category_id', 'id');
+    }
 }

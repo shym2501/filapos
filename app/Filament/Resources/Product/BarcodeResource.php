@@ -21,7 +21,7 @@ class BarcodeResource extends Resource
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $navigationGroup = 'Product Management';
     protected static ?string $navigationLabel = 'Barcode';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {
