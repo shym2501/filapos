@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('image')->nullable();
             $table->decimal('price', 10, 0)->nullable();
-            $table->tinyInteger('discount')->default(0);
-            $table->unsignedBigInteger('unit_id')->default(0);
+            $table->tinyInteger('discount')->default(0)->nullable();
+            $table->foreignId('product_unit_id')->nullable()->constrained('product_units')->constrained()->nullOnDelete();
             $table->unsignedBigInteger('qty')->default(0);
             $table->timestamps();
 

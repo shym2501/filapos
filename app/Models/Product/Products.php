@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Product\Brand;
 use App\Models\Product\Category;
+use App\Models\Product\Unit;
 
 class Products extends Model
 {
@@ -16,11 +17,12 @@ class Products extends Model
     protected $fillable = [
         'product_category_id',
         'product_brand_id',
-        'product_unit_id',
         'name',
         'slug',
         'image',
         'price',
+        'discount',
+        'product_unit_id',
         'qty'
     ];
     public function category() : BelongsTo {
@@ -29,11 +31,9 @@ class Products extends Model
     public function brands() : BelongsTo {
         return $this->belongsTo(Brand::class, 'product_brand_id', 'id');
     }
-
-
-    // public function unit() : BelongsTo {
-    //     return $this->belongsTo(Unit::class, 'unit_id', 'id');
-    // }
+    public function units() : BelongsTo {
+        return $this->belongsTo(Unit::class, 'product_unit_id', 'id');
+    }
 }
 
 

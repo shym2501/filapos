@@ -27,7 +27,7 @@ class BrandResource extends Resource
   protected static ?string $recordTitleAttribute = 'name';
   protected static ?string $navigationGroup = 'Product Management';
   protected static ?string $navigationLabel = 'Brands';
-  protected static ?int $navigationSort = 2;
+  protected static ?int $navigationSort = 4;
 
   public static function form(Form $form): Form
   {
@@ -35,7 +35,7 @@ class BrandResource extends Resource
       ->schema([
         Card::make()
           ->schema([
-            Forms\Components\Grid::make()
+            Forms\Components\Group::make()
               ->schema([
                 Forms\Components\TextInput::make('name')
                   ->required()
@@ -53,7 +53,11 @@ class BrandResource extends Resource
                 Forms\Components\TextInput::make('website')
                   ->dehydrated()
                   ->maxLength(255),
+              ])
+              ->columnSpan(['lg' => 1]),
 
+            Forms\Components\Group::make()
+              ->schema([
                 Forms\Components\FileUpload::make('logo')
                   ->label('Brand Logo')
                   ->image()
@@ -63,8 +67,10 @@ class BrandResource extends Resource
                     fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                       ->prepend('brand-logo-'),
                   ),
-              ])->columns(2),
+              ])
+              ->columnSpan(['lg' => 1]),
           ])
+          ->columns(2),
       ]);
   }
 

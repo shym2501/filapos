@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\Product;
 
 use App\Filament\Resources\Product\ProductsResource\Pages;
-// use App\Filament\Resources\Product\ProductsResource\RelationManagers;
 use App\Filament\Resources\Product\CategoryResource\RelationManagers;
 use App\Models\Product\Category;
 use App\Models\Product\Brand;
+use App\Models\Product\Unit;
 use App\Models\Product\Products;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -32,7 +32,7 @@ class ProductsResource extends Resource
   protected static ?string $recordTitleAttribute = 'name';
   protected static ?string $navigationGroup = 'Product Management';
   protected static ?string $navigationLabel = 'Products';
-  protected static ?int $navigationSort = 4;
+  protected static ?int $navigationSort = 3;
 
   public static function form(Form $form): Form
   {
@@ -80,7 +80,7 @@ class ProductsResource extends Resource
 
         Forms\Components\Group::make()
           ->schema([
-            Forms\Components\Section::make('Pricing')
+            Forms\Components\Section::make()
               ->schema([
                 Forms\Components\TextInput::make('price')
                   ->numeric()
@@ -95,10 +95,9 @@ class ProductsResource extends Resource
               ->columns(2),
             Forms\Components\Section::make('Inventory')
               ->schema([
-                Forms\Components\TextInput::make('unit_id')
-                  ->label('Satuan')
-                  ->unique(Products::class, 'unit_id', ignoreRecord: true)
-                  ->maxLength(255)
+                Forms\Components\Select::make('product_unit_id')
+                  ->label('Select Unit')
+                  ->options(Unit::all()->pluck('name', 'id'))
                   ->required(),
 
                 Forms\Components\TextInput::make('qty')
@@ -157,8 +156,21 @@ class ProductsResource extends Resource
           ->sortable()
           ->toggleable(),
 
+
         Tables\Columns\TextColumn::make('qty')
           ->label('Quantity')
+          ->searchable()
+          ->sortable()
+          ->toggleable(),
+
+        Tables\Columns\TextColumn::make('units.alias')
+          ->label('Unit')
+          ->searchable()
+          ->sortable()
+          ->toggleable(),
+
+        Tables\Columns\TextColumn::make('discount')
+          ->label('Discount')
           ->searchable()
           ->sortable()
           ->toggleable(),
