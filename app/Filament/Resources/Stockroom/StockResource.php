@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Product;
+namespace App\Filament\Resources\Stockroom;
 
-use App\Filament\Resources\Product\BarcodeResource\Pages;
-use App\Filament\Resources\Product\BarcodeResource\RelationManagers;
-use App\Models\Product\Barcode;
+use App\Filament\Resources\Stockroom\StockResource\Pages;
+use App\Filament\Resources\Stockroom\StockResource\RelationManagers;
+use App\Models\Stockroom\Stock;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,15 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BarcodeResource extends Resource
+class StockResource extends Resource
 {
-    protected static ?string $model = Barcode::class;
+    protected static ?string $model = Stock::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-qr-code';
-    protected static ?string $recordTitleAttribute = 'name';
-    protected static ?string $navigationGroup = 'Catalog';
-    protected static ?string $navigationLabel = 'Barcode';
-    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -54,7 +50,7 @@ class BarcodeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageBarcodes::route('/'),
+            'index' => Pages\ManageStocks::route('/'),
         ];
     }
 }

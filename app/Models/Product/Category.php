@@ -16,6 +16,7 @@ class Category extends Model
     protected $guarded = [];
     protected $fillable = [
         'name',
+        'parent_id',
         'slug'
     ];
     public function children(): HasMany
