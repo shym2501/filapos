@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\Product;
+namespace App\Filament\Clusters\CatalogSetup\Resources;
 
-use App\Filament\Resources\Product\UnitResource\Pages;
+use App\Filament\Clusters\CatalogSetup;
+use App\Filament\Clusters\CatalogSetup\Resources\UnitResource\Pages;
 use App\Models\Product\Unit;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,13 +14,14 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
 use Illuminate\Support\Str;
 
+
 class UnitResource extends Resource
 {
     protected static ?string $model = Unit::class;
-
+    protected static ?string $cluster = CatalogSetup::class;
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
     protected static ?string $recordTitleAttribute = 'name';
-    protected static ?string $navigationGroup = 'Catalog';
+    // protected static ?string $navigationGroup = 'Catalog';
     protected static ?string $navigationLabel = 'Units';
     protected static ?int $navigationSort = 2;
 

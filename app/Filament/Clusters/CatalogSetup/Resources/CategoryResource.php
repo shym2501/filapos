@@ -1,30 +1,26 @@
 <?php
 
-namespace App\Filament\Resources\Product;
+namespace App\Filament\Clusters\CatalogSetup\Resources;
 
-use App\Filament\Resources\Product\CategoryResource\Pages;
-use App\Filament\Resources\Product\CategoryResource\RelationManagers;
+use App\Filament\Clusters\CatalogSetup;
+use App\Filament\Clusters\CatalogSetup\Resources\CategoryResource\Pages;
 use App\Models\Product\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Notifications\Notification;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\TextInput;
 
 class CategoryResource extends Resource
 {
   protected static ?string $model = Category::class;
+  protected static ?string $cluster = CatalogSetup::class;
   protected static ?string $navigationIcon = 'heroicon-o-tag';
   protected static ?string $recordTitleAttribute = 'name';
-  protected static ?string $navigationGroup = 'Catalog';
   protected static ?string $navigationLabel = 'Category';
   protected static ?int $navigationSort = 1;
 

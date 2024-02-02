@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\Product;
+namespace App\Filament\Clusters\CatalogSetup\Resources;
 
-use App\Filament\Resources\Product\BrandResource\Pages;
-use App\Filament\Resources\Product\BrandResource\RelationManagers;
+use App\Filament\Clusters\CatalogSetup;
+use App\Filament\Clusters\CatalogSetup\Resources\BrandResource\Pages;
 use App\Models\Product\Brand;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,22 +12,18 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\FileUpload;
-use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class BrandResource extends Resource
 {
   protected static ?string $model = Brand::class;
-
+  protected static ?string $cluster = CatalogSetup::class;
   protected static ?string $navigationIcon = 'heroicon-o-bookmark-square';
   protected static ?string $recordTitleAttribute = 'name';
-  protected static ?string $navigationGroup = 'Catalog';
-  protected static ?string $navigationLabel = 'Brands';
-  protected static ?int $navigationSort = 4;
+  protected static ?string $navigationLabel = 'Brand';
+  protected static ?int $navigationSort = 3;
 
   public static function form(Form $form): Form
   {

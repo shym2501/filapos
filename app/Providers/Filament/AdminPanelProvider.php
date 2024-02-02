@@ -37,7 +37,7 @@ class AdminPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
-
+            ->sidebarWidth('17rem')
             ->font('Poppins')
             ->brandName('Fila POS')
             // ->brandLogo(asset('images/logo.svg'))
@@ -72,9 +72,11 @@ class AdminPanelProvider extends PanelProvider
                 'Paymaster',
                 'Settings',
             ])
+            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Log out')
             ]);
-
     }
 }

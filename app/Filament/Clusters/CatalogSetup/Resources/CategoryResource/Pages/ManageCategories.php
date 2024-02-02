@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Product\CategoryResource\Pages;
+namespace App\Filament\Clusters\CatalogSetup\Resources\CategoryResource\Pages;
 
-use App\Filament\Resources\Product\CategoryResource;
+use App\Filament\Clusters\CatalogSetup\Resources\CategoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
 
@@ -18,6 +18,6 @@ class ManageCategories extends ManageRecords
     }
     public function getTitle(): string
     {
-        return "Product Category";
+        return "Category";
     }
 }
