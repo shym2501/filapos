@@ -90,7 +90,8 @@ class ProductsResource extends Resource
                                 Forms\Components\TextInput::make('price')
                                     ->numeric()
                                     ->rules(['regex:/^\d{1,6}$/'])
-                                    ->required(),
+                                    ->required()
+                                    ->currencyMask(thousandSeparator: '.'),
 
                                 // Forms\Components\TextInput::make('discount')
                                 //     ->label('Discount')
@@ -151,8 +152,8 @@ class ProductsResource extends Resource
                     ->label('Price')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
-
+                    ->toggleable()
+                    ->currency('IDR'),
 
                 Tables\Columns\TextColumn::make('qty')
                     ->label('Stock')
