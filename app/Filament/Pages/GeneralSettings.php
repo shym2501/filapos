@@ -1,28 +1,47 @@
 <?php
 
-namespace App\Filament\Clusters;
+namespace App\Filament\Pages;
 
 use App\Filament\Clusters\CatalogSetup\Resources\CategoryResource;
-use App\Filament\Pages\GeneralSettings;
 use App\Filament\Resources\Product\ProductsResource;
-use Filament\Clusters\Cluster;
+use App\Filament\Clusters\CatalogSetup\Resources\CategoryResource\Pages;
 use AymanAlhattami\FilamentPageWithSidebar\Traits\HasPageSidebar;
 use Illuminate\Database\Eloquent\Model;
 use AymanAlhattami\FilamentPageWithSidebar\FilamentPageSidebar;
 use AymanAlhattami\FilamentPageWithSidebar\PageNavigationItem;
 use Filament\Pages\Page;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Filament\Actions;
 
-class CatalogSetup extends Cluster
+
+class GeneralSettings extends Page
 {
-    use HasPageSidebar;
-    protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
-    protected static ?string $navigationLabel = 'Catalog Setup';
-    protected static ?string $navigationParentItem = 'Products';
-    protected static ?string $navigationGroup = 'Catalog';
-    protected static ?string $slug = 'catalog/category';
-    protected static ?int $navigationSort = 1;
+  use HasPageSidebar;
+  protected static ?string $navigationIcon = 'heroicon-o-document-text';
+  protected static ?string $navigationGroup = 'Catalog';
+  protected static ?string $title = 'General';
+  protected static string $view = 'filament.pages.general-settings';
 
-    public static function sidebar(): FilamentPageSidebar
+  // protected static string $resource = ProductsResource::class;
+
+  protected function getHeaderActions(): array
+  {
+    return [
+      Actions\CreateAction::make(),
+    ];
+  }
+
+  public static function getPages(): array
+  {
+    return [
+      'index' => Pages\ManageCategories::route('/'),
+    ];
+  }
+
+  public static function sidebar(): FilamentPageSidebar
   {
     return FilamentPageSidebar::make()
       ->topbarNavigation()
@@ -53,5 +72,4 @@ class CatalogSetup extends Cluster
           ->visible(true),
       ]);
   }
-
 }
