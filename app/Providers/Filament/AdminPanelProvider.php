@@ -39,7 +39,7 @@ class AdminPanelProvider extends PanelProvider
             ->breadcrumbs(false)
             ->sidebarWidth('14rem')
             ->font('Poppins')
-            ->brandName('Fila POS')
+            ->brandName('Fila POS v.2')
             // ->brandLogo(asset('images/logo.svg'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
