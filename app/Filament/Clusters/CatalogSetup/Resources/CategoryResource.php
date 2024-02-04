@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Card;
+use Filament\Pages\SubNavigationPosition;
 
 class CategoryResource extends Resource
 {
@@ -23,6 +24,7 @@ class CategoryResource extends Resource
   protected static ?string $recordTitleAttribute = 'name';
   protected static ?string $navigationLabel = 'Category';
   protected static ?int $navigationSort = 1;
+  protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::TopBar;
 
   public static function form(Form $form): Form
   {

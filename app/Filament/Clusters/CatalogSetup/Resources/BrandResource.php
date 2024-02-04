@@ -15,6 +15,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\Card;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Illuminate\Support\Str;
+use Filament\Pages\SubNavigationPosition;
 
 class BrandResource extends Resource
 {
@@ -24,6 +25,7 @@ class BrandResource extends Resource
   protected static ?string $recordTitleAttribute = 'name';
   protected static ?string $navigationLabel = 'Brand';
   protected static ?int $navigationSort = 3;
+  protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::TopBar;
 
   public static function form(Form $form): Form
   {

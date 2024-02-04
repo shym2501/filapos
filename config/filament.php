@@ -1,5 +1,8 @@
 <?php
 
+use App\Filament\Widgets\StatsOverview;
+use Filament\Widgets\StatsOverviewWidget;
+
 return [
 
     /*
@@ -55,6 +58,14 @@ return [
     */
 
     'assets_path' => null,
+
+    'widgets' => [
+        'namespace' => 'App\\Filament\\Widgets',
+        'path' => app_path('Filament/Widgets'),
+        'register' => [
+            StatsOverview::class
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -32,12 +32,12 @@ class AdminPanelProvider extends PanelProvider
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
                 'info' => Color::Blue,
-                'primary' => Color::Indigo,
+                'primary' => Color::Blue,
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
             ->breadcrumbs(false)
-            ->sidebarWidth('17rem')
+            ->sidebarWidth('14rem')
             ->font('Poppins')
             ->brandName('Fila POS')
             // ->brandLogo(asset('images/logo.svg'))
@@ -75,6 +75,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Log out')
-            ]);
+            ])
+            ->viteTheme('resources/css/filament/admin/theme.css');
     }
 }

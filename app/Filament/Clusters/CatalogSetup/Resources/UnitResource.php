@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
 use Illuminate\Support\Str;
+use Filament\Pages\SubNavigationPosition;
 
 
 class UnitResource extends Resource
@@ -24,6 +25,7 @@ class UnitResource extends Resource
     // protected static ?string $navigationGroup = 'Catalog';
     protected static ?string $navigationLabel = 'Units';
     protected static ?int $navigationSort = 2;
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::TopBar;
 
     public static function form(Form $form): Form
     {
