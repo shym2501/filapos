@@ -12,6 +12,7 @@
         "ariaieboy/filament-currency": "^1.2",
         "filament/actions": "3.2",
         "filament/filament": "3.2",
+        "filament/notifications": "3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.0",
         "filament/spatie-laravel-settings-plugin": "^3.0",
         "guzzlehttp/guzzle": "^7.2",

@@ -75,6 +75,7 @@ class BrandResource extends Resource
   public static function table(Table $table): Table
   {
     return $table
+    ->defaultSort('name')
       ->columns([
         ImageColumn::make('logo')
           ->square(),

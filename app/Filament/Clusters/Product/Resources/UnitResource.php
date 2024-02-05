@@ -23,7 +23,7 @@ class UnitResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
     protected static ?string $recordTitleAttribute = 'name';
     // protected static ?string $navigationGroup = 'Catalog';
-    protected static ?string $navigationLabel = 'Units';
+    protected static ?string $navigationLabel = 'Satuan';
     protected static ?int $navigationSort = 2;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::TopBar;
 
@@ -41,7 +41,7 @@ class UnitResource extends Resource
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(fn (string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
 
-                                    Forms\Components\TextInput::make('alias')
+                                Forms\Components\TextInput::make('alias')
                                     ->required()
                                     ->maxLength(255),
                             ]),
@@ -58,6 +58,7 @@ class UnitResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('name')
             ->columns([
                 TextColumn::make('name')
                     ->sortable(),

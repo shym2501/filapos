@@ -16,4 +16,9 @@ class ManageUnits extends ManageRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function getTitle(): string
+    {
+        return "Satuan";
+    }
 }

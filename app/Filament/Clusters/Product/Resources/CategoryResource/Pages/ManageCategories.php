@@ -18,6 +18,6 @@ class ManageCategories extends ManageRecords
     }
     public function getTitle(): string
     {
-        return "Category";
+        return "Kategori";
     }
 }

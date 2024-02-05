@@ -5,6 +5,8 @@ namespace App\Filament\Clusters\Product\Resources;
 use App\Filament\Clusters\Product;
 use App\Filament\Clusters\Product\Resources\ProductsResource\Pages;
 use App\Filament\Clusters\Product\Resources\ProductsResource\RelationManagers;
+use App\Filament\Exports\ProductExporter;
+use App\Filament\Imports\ProductImporter;
 use App\Models\Catalog\Products;
 use App\Models\Catalog\Category;
 use App\Models\Catalog\Unit;
@@ -18,14 +20,17 @@ use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Pages\SubNavigationPosition;
+use Filament\Tables\Actions\ExportAction;
+use Filament\Tables\Actions\ImportAction;
 
 class ProductsResource extends Resource
 {
     protected static ?string $model = Products::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
-
     protected static ?string $cluster = Product::class;
+    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $navigationLabel = 'Produk';
+
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::TopBar;
 
     public static function form(Form $form): Form
@@ -64,13 +69,13 @@ class ProductsResource extends Resource
 
                         Forms\Components\Select::make('product_category_id')
                             ->label('Select Category')
-                            ->options(Category::all()->pluck('name', 'id'))
-                            ->required(),
+                            ->options(Category::all()->pluck('name', 'id')),
+                        // ->required(),
 
                         Forms\Components\Select::make('product_unit_id')
                             ->label('Select Unit')
-                            ->options(Unit::all()->pluck('name', 'id'))
-                            ->required(),
+                            ->options(Unit::all()->pluck('name', 'id')),
+                        // ->required(),
 
 
                     ])
@@ -81,8 +86,6 @@ class ProductsResource extends Resource
                         Forms\Components\Section::make()
                             ->schema([
                                 Forms\Components\TextInput::make('price')
-                                    //   ->numeric()
-                                    //   ->rules(['regex:/^\d{1,6}$/'])
                                     ->required()
                                     ->currencyMask(thousandSeparator: '.', decimalSeparator: ',', precision: 2),
 
@@ -118,6 +121,7 @@ class ProductsResource extends Resource
     {
         return $table
             ->recordTitleAttribute('name')
+            ->defaultSort('name')
             ->columns([
                 ImageColumn::make('image')
                     ->label('Image')
@@ -183,7 +187,7 @@ class ProductsResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ProductRelationManager::class,
         ];
     }
 

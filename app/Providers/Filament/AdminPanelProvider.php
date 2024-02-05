@@ -76,6 +76,7 @@ class AdminPanelProvider extends PanelProvider
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Log out')
             ])
-            ->viteTheme('resources/css/filament/admin/theme.css');
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->databaseNotifications();
     }
 }

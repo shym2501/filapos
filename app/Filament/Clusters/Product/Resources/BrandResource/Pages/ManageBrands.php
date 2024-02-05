@@ -16,4 +16,9 @@ class ManageBrands extends ManageRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function getTitle(): string
+    {
+        return "Brand";
+    }
 }
