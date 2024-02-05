@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Filament\Clusters\CatalogSetup\Resources;
+namespace App\Filament\Clusters\Product\Resources;
 
-use App\Filament\Clusters\CatalogSetup;
-use App\Filament\Clusters\CatalogSetup\Resources\ProductsResource\Pages;
-use App\Filament\Clusters\CatalogSetup\Resources\ProductsResource\RelationManagers;
-use App\Models\Product\Products;
+use App\Filament\Clusters\Product;
+use App\Filament\Clusters\Product\Resources\ProductsResource\Pages;
+use App\Filament\Clusters\Product\Resources\ProductsResource\RelationManagers;
+use App\Models\Catalog\Products;
+use App\Models\Catalog\Category;
+use App\Models\Catalog\Unit;
+use App\Models\Catalog\Brand;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Resources\Pages\Page;
-use App\Models\Product\Category;
-use App\Models\Product\Brand;
-use App\Models\Product\Unit;
 use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -28,7 +25,7 @@ class ProductsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
-    protected static ?string $cluster = CatalogSetup::class;
+    protected static ?string $cluster = Product::class;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::TopBar;
 
     public static function form(Form $form): Form

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Clusters\CatalogSetup\Resources;
+namespace App\Filament\Clusters\Product\Resources;
 
-use App\Filament\Clusters\CatalogSetup;
-use App\Filament\Clusters\CatalogSetup\Resources\BrandResource\Pages;
-use App\Models\Product\Brand;
+use App\Filament\Clusters\Product;
+use App\Filament\Clusters\Product\Resources\BrandResource\Pages;
+use App\Models\Catalog\Brand;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -20,7 +20,7 @@ use Filament\Pages\SubNavigationPosition;
 class BrandResource extends Resource
 {
   protected static ?string $model = Brand::class;
-  protected static ?string $cluster = CatalogSetup::class;
+  protected static ?string $cluster = Product::class;
   protected static ?string $navigationIcon = 'heroicon-o-bookmark-square';
   protected static ?string $recordTitleAttribute = 'name';
   protected static ?string $navigationLabel = 'Brand';

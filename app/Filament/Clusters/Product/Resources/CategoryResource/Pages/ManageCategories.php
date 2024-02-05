@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Clusters\CatalogSetup\Resources\CategoryResource\Pages;
+namespace App\Filament\Clusters\Product\Resources\CategoryResource\Pages;
 
-use App\Filament\Clusters\CatalogSetup\Resources\CategoryResource;
+use App\Filament\Clusters\Product\Resources\CategoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
 

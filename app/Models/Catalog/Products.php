@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Product;
+namespace App\Models\Catalog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Product\Brand;
-use App\Models\Product\Category;
-use App\Models\Product\Unit;
+use App\Models\Catalog\Brand;
+use App\Models\Catalog\Category;
+use App\Models\Catalog\Unit;
 
 class Products extends Model
 {

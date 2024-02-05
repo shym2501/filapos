@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Product\Brand;
+use App\Models\Catalog\Brand;
 use Illuminate\Support\Facades\Storage;
 
 class BrandObserver

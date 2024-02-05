@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Product\Brand;
-use App\Models\Product\Products;
+use App\Models\Catalog\Brand;
+use App\Models\Catalog\Products;
 use App\Observers\BrandObserver;
 use App\Observers\ProductObserver;
 use Illuminate\Auth\Events\Registered;

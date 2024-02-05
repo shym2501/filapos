@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Product;
+namespace App\Models\Catalog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Models\Product\Products;
+use App\Models\Catalog\Products;
 
 
 class Brand extends Model

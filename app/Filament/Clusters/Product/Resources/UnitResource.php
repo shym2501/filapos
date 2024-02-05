@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Clusters\CatalogSetup\Resources;
+namespace App\Filament\Clusters\Product\Resources;
 
-use App\Filament\Clusters\CatalogSetup;
-use App\Filament\Clusters\CatalogSetup\Resources\UnitResource\Pages;
-use App\Models\Product\Unit;
+use App\Filament\Clusters\Product;
+use App\Filament\Clusters\Product\Resources\UnitResource\Pages;
+use App\Models\Catalog\Unit;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,7 +19,7 @@ use Filament\Pages\SubNavigationPosition;
 class UnitResource extends Resource
 {
     protected static ?string $model = Unit::class;
-    protected static ?string $cluster = CatalogSetup::class;
+    protected static ?string $cluster = Product::class;
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
     protected static ?string $recordTitleAttribute = 'name';
     // protected static ?string $navigationGroup = 'Catalog';

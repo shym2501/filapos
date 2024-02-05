@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Product\Products;
+use App\Models\Catalog\Products;
 use Illuminate\Support\Facades\Storage;
 
 class ProductObserver

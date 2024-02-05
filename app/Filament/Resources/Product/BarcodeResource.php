@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Product;
 
 use App\Filament\Resources\Product\BarcodeResource\Pages;
 use App\Filament\Resources\Product\BarcodeResource\RelationManagers;
-use App\Models\Product\Barcode;
+use App\Models\Catalog\Barcode;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
