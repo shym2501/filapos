@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Card;
 use Filament\Pages\SubNavigationPosition;
+use Filament\Tables\Actions\Action;
 
 class CategoryResource extends Resource
 {
@@ -51,7 +52,7 @@ class CategoryResource extends Resource
               Forms\Components\Select::make('parent_id')
               ->label('Parent')
               ->relationship('parent', 'name', fn (Builder $query) => $query->where('parent_id', null))
-              ->searchable()
+            //   ->searchable()
               ->placeholder('Select parent category'),
           ])
       ]);
